@@ -12,3 +12,4 @@ WHERE low_fats = 'Y' AND recyclable = 'Y';
 
 -- tercer ejercicio leetcode con sql --
 ----------------------------------------------------
+
