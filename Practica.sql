@@ -1,0 +1,14 @@
+-- Primer ejercicio Leetcode con SQL --
+---------------------------------------------------
+SELECT name, population, area
+FROM world
+WHERE area >= 3000000 OR population >= 25000000;
+
+-- Segundo ejercicio leetcode con SQL --
+---------------------------------------------------
+SELECT product_id
+FROM products
+WHERE low_fats = 'Y' AND recyclable = 'Y';
+
+-- tercer ejercicio leetcode con sql --
+----------------------------------------------------
