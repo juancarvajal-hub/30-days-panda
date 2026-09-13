@@ -12,4 +12,8 @@ WHERE low_fats = 'Y' AND recyclable = 'Y';
 
 -- tercer ejercicio leetcode con sql --
 ----------------------------------------------------
-
+SELECT c.name AS Customers
+FROM customers c
+LEFT JOIN orders o
+ON c.id = o.customerId
+WHERE o.id IS NULL;
