@@ -17,3 +17,14 @@ FROM customers c
 LEFT JOIN orders o
 ON c.id = o.customerId
 WHERE o.id IS NULL;
+
+-- cuarto ejercicio leetcode con sql --
+----------------------------------------------------
+
+SELECT DISTINCT author_id AS id
+FROM Views v 
+WHERE v.author_id = v.viewer_id
+ORDER BY v.author_id
+
+
+
