@@ -26,5 +26,13 @@ FROM Views v
 WHERE v.author_id = v.viewer_id
 ORDER BY v.author_id
 
+-- Quinto ejercicio de letcode con sql 
+----------------------------------------------------
+
+SELECT tweet_id
+FROM Tweets t
+WHERE  LENGTH(content) > 15
+
+
 
 
