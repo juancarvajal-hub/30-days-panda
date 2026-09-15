@@ -26,6 +26,7 @@ FROM Views v
 WHERE v.author_id = v.viewer_id
 ORDER BY v.author_id
 
+
 -- Quinto ejercicio de letcode con sql 
 ----------------------------------------------------
 
@@ -33,6 +34,18 @@ SELECT tweet_id
 FROM Tweets t
 WHERE  LENGTH(content) > 15
 
+
+-- Sexto ejercicio de leetcode con sql 
+---------------------------------------------------   
+
+SELECT employee_id,
+CASE
+    WHEN employee_id%2 != 0 AND SUBSTRING(name,1,1) != 'M'
+    THEN salary
+    ELSE 0
+    END AS bonus
+FROM Employees
+ORDER BY employee_id ASC;
 
 
 
