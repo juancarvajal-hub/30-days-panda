@@ -53,3 +53,11 @@ ORDER BY employee_id ASC;
 SELECT user_id, CONCAT(UPPER(SUBSTRING(name, 1, 1)), LOWER(SUBSTRING(name, 2))) AS name
 FROM Users
 ORDER BY user_id ASC;
+
+
+-- octavo ejercicio de sql
+-------------------------------------------------------
+
+SELECT *
+FROM Users1
+WHERE mail ~ '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\.com$';
