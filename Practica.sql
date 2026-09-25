@@ -61,3 +61,21 @@ ORDER BY user_id ASC;
 SELECT *
 FROM Users1
 WHERE mail ~ '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\.com$';
+
+
+-------- Noveno Ejercico de sql ----------------------
+---------------------------------------------------------
+
+SELECT patient_id,
+patient_name ,
+conditions   
+FROM Patients P
+WHERE P.conditions LIKE 'DIAB1%' 
+   OR P.conditions LIKE '% DIAB1%' ;
+
+
+
+
+
+
+
