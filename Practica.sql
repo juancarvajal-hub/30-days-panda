@@ -74,8 +74,14 @@ WHERE P.conditions LIKE 'DIAB1%'
    OR P.conditions LIKE '% DIAB1%' ;
 
 
+--------- decimo ejercicio de sql ----------
+----------------------------------------------------------
 
-
-
-
-
+WITH tbl1 AS( 
+  SELECT DISTINCT salary AS NthHighestSalary,
+  DENSE_RANK() OVER(ORDER BY salary DESC) AS conteo
+FROM Employee
+  )
+SELECT NthHighestSalary
+FROM tbl1
+WHERE conteo = 4;
