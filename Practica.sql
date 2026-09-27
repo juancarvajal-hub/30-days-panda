@@ -82,6 +82,8 @@ WITH tbl1 AS(
   DENSE_RANK() OVER(ORDER BY salary DESC) AS conteo
 FROM Employee
   )
-SELECT NthHighestSalary
+SELECT MAX(NthHighestSalary) AS NthHighestSalary
 FROM tbl1
 WHERE conteo = 4;
+
+
