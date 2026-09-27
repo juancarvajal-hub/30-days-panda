@@ -87,3 +87,20 @@ FROM tbl1
 WHERE conteo = 4;
 
 
+---------------- Decimoprimero ejercicio de sql------------
+--------------------------------------------------------------
+
+WITH tbl1 AS( 
+  SELECT DISTINCT salary AS NthHighestSalary,
+  DENSE_RANK() OVER(ORDER BY salary DESC) AS conteo
+FROM Employee
+  )
+SELECT MAX(NthHighestSalary) AS NthHighestSalary
+FROM tbl1
+WHERE conteo = 2;
+
+---------------- Decimosegundo ejercicio de sql -----------
+--------------------------------------------------------------
+
+
+
