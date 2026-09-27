@@ -102,5 +102,20 @@ WHERE conteo = 2;
 ---------------- Decimosegundo ejercicio de sql -----------
 --------------------------------------------------------------
 
+SELECT 
+    department.name AS department,
+    b.name AS Employee,
+    b.salary
+FROM (SELECT 
+    id,
+    name,
+    salary,
+    departmentid,
+    MAX(salary) OVER (PARTITION BY departmentid) AS max_sala
+FROM employee) b
+LEFT JOIN department ON b.departmentid = department.id
+WHERE b.salary = b.max_sala; 
 
 
+----------- decimotercer ejercicio de sql ------------------
+---------------------------------------------------------------
