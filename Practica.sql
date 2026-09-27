@@ -119,3 +119,25 @@ WHERE b.salary = b.max_sala;
 
 ----------- decimotercer ejercicio de sql ------------------
 ---------------------------------------------------------------
+
+SELECT
+   score,
+   DENSE_RANK() OVER (ORDER BY score DESC ) AS rank  
+FROM scores;
+
+---------- decimocuarto ejercicio de sql -----------------
+--------------------------------------------------------------
+
+DELETE 
+FROM Person
+WHERE id IN (
+    SELECT 
+        id    -- Se eliminó la coma que estaba aquí
+    FROM (
+      SELECT 
+      id, 
+      ROW_NUMBER() OVER (PARTITION BY email ORDER BY id ASC) AS numero_fila
+      FROM Person
+    ) AS bd1 
+    WHERE numero_fila > 1
+);
