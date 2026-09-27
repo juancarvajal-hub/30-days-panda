@@ -141,3 +141,21 @@ WHERE id IN (
     ) AS bd1 
     WHERE numero_fila > 1
 );
+
+
+------------- decimoquinto ejercicio de sql -------------------
+---------------------------------------------------------------
+
+SELECT
+    p.product_id,
+    unpivoted.store,
+    unpivoted.price
+FROM products p 
+CROSS JOIN LATERAL (
+  VALUES 
+  ('store1',p.store1),
+  ('store2',p.store2),
+  ('store3',p.store3)
+) AS unpivoted(store, price)
+WHERE price IS NOT NULL
+ORDER BY p.product_id;
