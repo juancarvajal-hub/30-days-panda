@@ -1,16 +1,16 @@
--- Primer ejercicio Leetcode con SQL --
+-- Primer ejercicio Leetcode con SQL -------------
 ---------------------------------------------------
 SELECT name, population, area
 FROM world
 WHERE area >= 3000000 OR population >= 25000000;
 
--- Segundo ejercicio leetcode con SQL --
+-- Segundo ejercicio leetcode con SQL -------------
 ---------------------------------------------------
 SELECT product_id
 FROM products
 WHERE low_fats = 'Y' AND recyclable = 'Y';
 
--- tercer ejercicio leetcode con sql --
+-- tercer ejercicio leetcode con sql ---------------
 ----------------------------------------------------
 SELECT c.name AS Customers
 FROM customers c
@@ -18,7 +18,7 @@ LEFT JOIN orders o
 ON c.id = o.customerId
 WHERE o.id IS NULL;
 
--- cuarto ejercicio leetcode con sql --
+-- cuarto ejercicio leetcode con sql ---------------
 ----------------------------------------------------
 
 SELECT DISTINCT author_id AS id
@@ -27,7 +27,7 @@ WHERE v.author_id = v.viewer_id
 ORDER BY v.author_id
 
 
--- Quinto ejercicio de letcode con sql 
+-- Quinto ejercicio de letcode con sql -------------
 ----------------------------------------------------
 
 SELECT tweet_id
@@ -35,7 +35,7 @@ FROM Tweets t
 WHERE  LENGTH(content) > 15
 
 
--- Sexto ejercicio de leetcode con sql 
+-- Sexto ejercicio de leetcode con sql ------------
 ---------------------------------------------------   
 
 SELECT employee_id,
@@ -47,7 +47,7 @@ CASE
 FROM Employees
 ORDER BY employee_id ASC;
 
---- Septimo ejercicio de leetcode con sql 
+--- Septimo ejercicio de leetcode con sql ----------
 ----------------------------------------------------
 
 SELECT user_id, CONCAT(UPPER(SUBSTRING(name, 1, 1)), LOWER(SUBSTRING(name, 2))) AS name
@@ -55,7 +55,7 @@ FROM Users
 ORDER BY user_id ASC;
 
 
--- octavo ejercicio de sql
+-- octavo ejercicio de sql ----------------------------
 -------------------------------------------------------
 
 SELECT *
@@ -63,7 +63,7 @@ FROM Users1
 WHERE mail ~ '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\.com$';
 
 
--------- Noveno Ejercico de sql ----------------------
+-------- Noveno Ejercico de sql -------------------------
 ---------------------------------------------------------
 
 SELECT patient_id,
@@ -74,7 +74,7 @@ WHERE P.conditions LIKE 'DIAB1%'
    OR P.conditions LIKE '% DIAB1%' ;
 
 
---------- decimo ejercicio de sql ----------
+--------- decimo ejercicio de sql ------------------------
 ----------------------------------------------------------
 
 WITH tbl1 AS( 
@@ -87,7 +87,7 @@ FROM tbl1
 WHERE conteo = 4;
 
 
----------------- Decimoprimero ejercicio de sql------------
+---------------- Decimoprimero ejercicio de sql---------------
 --------------------------------------------------------------
 
 WITH tbl1 AS( 
@@ -99,7 +99,7 @@ SELECT MAX(NthHighestSalary) AS NthHighestSalary
 FROM tbl1
 WHERE conteo = 2;
 
----------------- Decimosegundo ejercicio de sql -----------
+---------------- Decimosegundo ejercicio de sql --------------
 --------------------------------------------------------------
 
 SELECT 
@@ -117,7 +117,7 @@ LEFT JOIN department ON b.departmentid = department.id
 WHERE b.salary = b.max_sala; 
 
 
------------ decimotercer ejercicio de sql ------------------
+----------- decimotercer ejercicio de sql --------------------
 ---------------------------------------------------------------
 
 SELECT
@@ -125,7 +125,7 @@ SELECT
    DENSE_RANK() OVER (ORDER BY score DESC ) AS rank  
 FROM scores;
 
----------- decimocuarto ejercicio de sql -----------------
+---------- decimocuarto ejercicio de sql ---------------------
 --------------------------------------------------------------
 
 DELETE 
@@ -141,7 +141,6 @@ WHERE id IN (
     ) AS bd1 
     WHERE numero_fila > 1
 );
-
 
 ------------- decimoquinto ejercicio de sql -------------------
 ---------------------------------------------------------------
@@ -159,3 +158,27 @@ CROSS JOIN LATERAL (
 ) AS unpivoted(store, price)
 WHERE price IS NOT NULL
 ORDER BY p.product_id;
+
+---------------- decimosexto ejercicio de sql --------------------
+------------------------------------------------------------------
+
+WITH CategoriasMaestras AS (
+    SELECT unnest(ARRAY['Low Salary', 'Average Salary', 'High Salary']) AS category
+),
+CuentasCategorizadas AS (
+    SELECT 
+        CASE 
+            WHEN income < 20000 THEN 'Low Salary'
+            WHEN income BETWEEN 20000 AND 50000 THEN 'Average Salary'
+            ELSE 'High Salary'
+        END AS category
+    FROM Accounts
+)
+SELECT 
+    c.category,
+    -- CuentasCategorizadas.category,
+    COUNT(CuentasCategorizadas.category)
+FROM CategoriasMaestras c
+LEFT JOIN CuentasCategorizadas ON c.category = CuentasCategorizadas.category
+GROUP BY c.category; 
+
